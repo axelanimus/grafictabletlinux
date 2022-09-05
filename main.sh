@@ -12,12 +12,25 @@ main () {
 	
 	case $mainWindow in
 
-		'kernel')
-			kernelctl()
+		"${options[0]}")
+			kernelCtl()
 		;;
 
+		"${options[1]}")
+			devicesCtl()
+		;;
 
+		"${options[2]}")
+			parametersCtl()
+		;;
 
+		"${options[3]}")
+			modifiersCtl()
+		;;
+			
+		"${options[4]}")
+			setButtonsCtl()
+		;;
 
 	esac
 
@@ -27,7 +40,7 @@ main () {
 
 
 
-kernelctl () {
+kernelCtl () {
 
 	zenity --text-info --title="How to install the drivers" --html --url='https://github.com/DIGImend/digimend-kernel-drivers' --window-icon='resources/optimistic.png' --width='600' --height='600'; main()
 

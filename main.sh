@@ -38,6 +38,7 @@ main () {
 }
 
 
+main()
 
 
 kernelCtl () {
@@ -73,3 +74,4 @@ setButtonsCtl() {
 
 	
 }
+

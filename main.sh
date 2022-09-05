@@ -45,3 +45,31 @@ kernelCtl () {
 	zenity --text-info --title="How to install the drivers" --html --url='https://github.com/DIGImend/digimend-kernel-drivers' --window-icon='resources/optimistic.png' --width='600' --height='600'; main()
 
 }
+
+
+devicesCtl () {
+
+
+
+}
+
+
+parametersCtl () {
+
+
+
+}
+
+
+modifiersCtl() {
+
+
+	
+}
+
+
+setButtonsCtl() {
+
+
+	
+}

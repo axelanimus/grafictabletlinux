@@ -11,7 +11,7 @@ if [[ $? -ne 0 ]]; then
     select opt in ${options[*]}; do
 
         if [[ "$opt" = "yes" ]]; then
-            printf "\033[1;32mzenity\033[0m will be install it also we gonna give a kiss to the keyboard now\nyes you, if you don\'t do it your pc will gonna do kabum is your choice 3, 2, 1\n ok do not rather we gonna give execution permisses to the main.sh script...At least kiss the screen please\n"
+            printf "\033[1;32mzenity\033[0m will be install it also we gonna give a kiss to the keyboard now\nyes you, if you don\'t do it your pc will gonna do kabum is your choice 3, 2, 1\n ok do not rather we gonna give execution permisses to the main.sh script...\nAt least kiss the screen please\n"
             sudo apt update && sudo apt upgrade -y && sudo apt install zenity
             sudo chmod u+x $(dirname $(realpath $0))/main.sh
         else [[ "$opt" = "not" ]]

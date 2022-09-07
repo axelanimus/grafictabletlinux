@@ -50,7 +50,7 @@ kernelCtl () {
 
 devicesCtl () {
 
-	xsetwacom --list| sed 's/id:/\n/g;s/type:/\n/g'| zenity --list --title='Connected devices' --text='This are the co' --column='Device name' --column='id' --column='type' --width='500' --height='350' --window-icon=''; main()
+	xsetwacom --list| sed 's/id:/\n/g;s/type:/\n/g'| zenity --list --title='Connected devices' --text="This are the detected devices, let's to create something amazing " --column='Device name' --column='id' --column='type' --width='500' --height='350' --window-icon='resources/tablet.png'; main()
 
 }
 
@@ -75,3 +75,6 @@ setButtonsCtl() {
 	
 }
 
+
+
+# xsetwacom --list parameters | sed 's/-\ /\n/g'| zenity --list --column='Parameters' --column='Function'

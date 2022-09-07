@@ -43,14 +43,14 @@ main()
 
 kernelCtl () {
 
-	zenity --text-info --title="How to install the drivers" --html --url='https://github.com/DIGImend/digimend-kernel-drivers' --window-icon='resources/optimistic.png' --width='600' --height='600'; main()
+	zenity --text-info --title="How to install the drivers for your grfafic tablet" --html --url='https://github.com/DIGImend/digimend-kernel-drivers' --window-icon='resources/optimistic.png' --width='600' --height='600'; main()
 
 }
 
 
 devicesCtl () {
 
-
+	xsetwacom --list| sed 's/id:/\n/g;s/type:/\n/g'| zenity --list --title='Connected devices' --text='This are the co' --column='Device name' --column='id' --column='type' --width='500' --height='350' --window-icon=''; main()
 
 }
 

@@ -1,0 +1,5 @@
+This easy my bro, due to I'm a bad programer and super lazy, we gonna do this of the hard way, first you have to know how many buttons have your grafic tablet or the pencil(some have buttons like mine) this because we gonna set every button one by one, and because I hadn't took my shower I'm stinking, so, is or write a lot of code and do sleep to my family with my stink or I do this simple and take my shower of the month and my family don't kick me out of the house, easy choice...Let's do this simple, is easy.
+
+First choose if you want to set buttons of the grafic tablet or pencil
+
+Second put the number of buttons that have the device that you chose

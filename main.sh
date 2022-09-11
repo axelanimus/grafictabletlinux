@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-declare -a options=(kernel devices parameters modifiers setButtons)
+declare -a options=(kernel devices parameters modifiers setButtons help)
 
 zenity --info  --title="Let's do it champion" --text='This script will gonna help you to manage some configurations of your grafic tablet, never give up, trust in me you can do anything that you can imagine.' --window-icon='resources/renewable-energy.png'
 
@@ -32,6 +32,10 @@ main () {
 			setButtonsCtl()
 		;;
 
+		"${options[5]}")
+			helpCtl()
+		;;
+
 	esac
 
 
@@ -57,6 +61,7 @@ devicesCtl () {
 
 parametersCtl () {
 
+	xsetwacom --list parameters | sed 's/-\ /\n/g'| zenity --list --title="This are the parameters that you can modify" --text="Remember that by now this section is just for see the parameters" --column='Parameters' --column='Function' --height=600 --width=1000 --window-icon='resources/control.png'; main()
 
 
 }
@@ -64,7 +69,7 @@ parametersCtl () {
 
 modifiersCtl() {
 
-
+	xsetwacom --list modifiers| zenity --text-info --title='Keys supported' --width=300 --height=600 --window-icon='resources/teclado.png'
 	
 }
 
@@ -76,5 +81,8 @@ setButtonsCtl() {
 }
 
 
+helpCtl () {
 
-# xsetwacom --list parameters | sed 's/-\ /\n/g'| zenity --list --column='Parameters' --column='Function'
+	
+
+}

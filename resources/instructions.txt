@@ -17,4 +17,4 @@ xinput --test [device id]
 and testing the buttons clicking them and xinput returns you the number of button and some parameters, but this is some laborius, let's do this more easy, then of select the device will be prompt a window for test(push) the buttons of the device and that you can know which is the number id of the button, remember the id numbers very well cuz. Then of test you can to click cancel or continue window buttons, then of this push any button of your grafic tablet for continue with next option(The very, very cool option)
 
 
-Third here only insert in the form the button number and the keyboard shortcut or clear the keyboard shortcut assigned to that button, and that is all my little Picasso, now you can paint a Mona Lisa or any artwork that could imagine.
+Third here only insert in the form the button number and the keyboard shortcut or clear the keyboard shortcut assigned to that button, and that is all my little Picasso, now you can paint a Mona Lisa or any artwork that could imagine or you can do pure doodles like me.

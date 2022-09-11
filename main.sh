@@ -76,13 +76,28 @@ modifiersCtl() {
 
 setButtonsCtl() {
 
+	zenity --text-info --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.txt' --window-icon='resources/book.png'
 
-	
+	test [[ $? -eq 0 ]]; then
+		
+		device=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select an device for map its buttons'  --list --column='Aviable devices')
+
+		id=$(xsetwacom --list devices| grep -ie "$device"| sed 's/id:/\nid:/g'| grep -e 'id:'| cut -d '  ' -f1| tr -d 'id:\ '
+
+	else
+		main()	
+
+	fi
+
 }
 
 
 helpCtl () {
 
-	
+
 
 }
+
+# zenity --text-info --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.txt' --window-icon='resources/book.png'
+
+# ;devices=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select an device for map its buttons'  --list --column='Aviable devices')

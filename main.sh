@@ -3,6 +3,8 @@
 
 declare -a options=(kernel devices parameters modifiers setButtons help)
 
+declare -a keyCombination=()
+
 zenity --info  --title="Let's do it champion" --text='This script will gonna help you to manage some configurations of your grafic tablet, never give up, trust in me you can do anything that you can imagine.' --window-icon='resources/renewable-energy.png'
 
 
@@ -76,13 +78,66 @@ modifiersCtl() {
 
 setButtonsCtl() {
 
-	zenity --text-info --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.txt' --window-icon='resources/book.png'
+	zenity --text-info --html --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.txt' --window-icon='resources/book.png'
 
 	test [[ $? -eq 0 ]]; then
 		
 		device=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select an device for map its buttons'  --list --column='Aviable devices')
 
-		id=$(xsetwacom --list devices| grep -ie "$device"| sed 's/id:/\nid:/g'| grep -e 'id:'| cut -d '  ' -f1| tr -d 'id:\ '
+		id=$(xsetwacom --list devices| grep -ie "$device"| sed 's/id:/\nid:/g'| grep -e 'id:'| tr -c "[:print:]" " "| cut -d " " -f2)
+
+
+		xinput --test $id| zenity --text-info
+
+		buttonID=$(    )
+
+		until ! [0]; do
+
+			getShortCut()
+
+			zenity --
+
+			if [[ $? -ne 0 ]]; then
+
+				break
+
+			else
+
+				continue
+
+			fi
+
+		done
+
+
+		pureKeys=$(zenity --forms --title='Alphabet keys for your shortcut' --text="Right now this is your key shortcut for the button number $buttonID:  $(echo ${keyCombination[*]}| tr ' ' '+')" --add-entry='Insert one alphabet key or many separate by spaces') 
+
+		zenity --question --title='Finally the last step' --text="This is your key shortcut for the button id $buttonID :  $(echo ${keyCombination[*]}| tr ' ' '+') + $(echo $pureKeys| tr ' ' '+')  Is correct?" --window-icon='resources/information.png'
+
+		if [[ $? -eq 0 ]]; then
+
+			xsetwacom --set "$device" Button $buttonID "key ${keyCombination[*]} $pureKeys" 
+
+			zenity --info --window-icon='resources/ok.png'
+
+			zenity --question --title='Sucess, we did it champion' --text="Do you want to map another button of your grafic tablet?" --window-icon='resources/ask.png'
+
+			test ! [[ $? -ne 0 ]]; then
+
+				setButtonsCtl()
+
+			else
+
+				main()
+
+			fi
+
+		else
+
+			setButtonsCtl()	
+
+		fi
+
 
 	else
 		main()	
@@ -95,6 +150,15 @@ setButtonsCtl() {
 helpCtl () {
 
 
+
+}
+
+
+getShortCut () {
+	
+	modifiers=$(xsetwacom --list modifiers| sed '/ed:/d;/Keys/d;/^$/d'| zenity --list)
+
+	keyCombination+=("$modifiers")
 
 }
 

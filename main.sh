@@ -65,7 +65,7 @@ setButtonsCtl () {
 
 			getShortCut
 
-			zenity --
+			zenity --question --title='Answer wisely Einstein' --text='This are modifiers added to your shortcut:   $(echo ${keyCombination[*]})  Do you want add another?' --window-icon='resources/question.png'
 
 			if [[ $? -ne 0 ]]; then
 
@@ -92,7 +92,7 @@ setButtonsCtl () {
 
 			zenity --question --title='Sucess, we did it champion' --text="Do you want to map another button of your grafic tablet?" --window-icon='resources/ask.png'
 
-			test ! [[ $? -ne 0 ]]; then
+			if ! [[ $? -ne 0 ]]; then
 
 				setButtonsCtl
 

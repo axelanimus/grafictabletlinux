@@ -8,79 +8,49 @@ declare -a keyCombination=()
 zenity --info  --title="Let's do it champion" --text='This script will gonna help you to manage some configurations of your grafic tablet, never give up, trust in me you can do anything that you can imagine.' --window-icon='resources/renewable-energy.png'
 
 
-main () {
-
-	mainWindow=$(echo ${options[*]}| tr ' ' '\n'| zenity --list --title='Here no one give up, animus' --text='Select an option' --column='Options' --window-icon='resources/artificial-intelligence.png' --width='275' --height='225')
-	
-	case $mainWindow in
-
-		"${options[0]}")
-			kernelCtl()
-		;;
-
-		"${options[1]}")
-			devicesCtl()
-		;;
-
-		"${options[2]}")
-			parametersCtl()
-		;;
-
-		"${options[3]}")
-			modifiersCtl()
-		;;
-			
-		"${options[4]}")
-			setButtonsCtl()
-		;;
-
-		"${options[5]}")
-			helpCtl()
-		;;
-
-	esac
-
-
-}
-
-
-main()
-
-
 kernelCtl () {
 
-	zenity --text-info --title="How to install the drivers for your grfafic tablet" --html --url='https://github.com/DIGImend/digimend-kernel-drivers' --window-icon='resources/optimistic.png' --width='600' --height='600'; main()
+	zenity --text-info --title="How to install the drivers for your grfafic tablet" --html --url='https://github.com/DIGImend/digimend-kernel-drivers' --window-icon='resources/optimistic.png' --width='600' --height='600'; main
 
 }
 
 
 devicesCtl () {
 
-	xsetwacom --list| sed 's/id:/\n/g;s/type:/\n/g'| zenity --list --title='Connected devices' --text="This are the detected devices, let's to create something amazing " --column='Device name' --column='id' --column='type' --width='500' --height='350' --window-icon='resources/tablet.png'; main()
+	xsetwacom --list| sed 's/id:/\n/g;s/type:/\n/g'| zenity --list --title='Connected devices' --text="This are the detected devices, let's to create something amazing " --column='Device name' --column='id' --column='type' --width='500' --height='350' --window-icon='resources/tablet.png'; main
 
 }
 
 
 parametersCtl () {
 
-	xsetwacom --list parameters | sed 's/-\ /\n/g'| zenity --list --title="This are the parameters that you can modify" --text="Remember that by now this section is just for see the parameters" --column='Parameters' --column='Function' --height=600 --width=1000 --window-icon='resources/control.png'; main()
+	xsetwacom --list parameters | sed 's/-\ /\n/g'| zenity --list --title="This are the parameters that you can modify" --text="Remember that by now this section is just for see the parameters" --column='Parameters' --column='Function' --height=600 --width=1000 --window-icon='resources/control.png'; main
 
 
 }
 
 
-modifiersCtl() {
+modifiersCtl () {
 
-	xsetwacom --list modifiers| zenity --text-info --title='Keys supported' --width=300 --height=600 --window-icon='resources/teclado.png'
+	xsetwacom --list modifiers| zenity --text-info --title='Keys supported' --width=300 --height=600 --window-icon='resources/teclado.png'; main
 	
 }
 
 
-setButtonsCtl() {
+getShortCut () {
+	
+	modifiers=$(xsetwacom --list modifiers| sed '/ed:/d;/Keys/d;/^$/d'| zenity --list)
+
+	keyCombination+=("$modifiers")
+
+}
+
+
+setButtonsCtl () {
 
 	zenity --text-info --html --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.txt' --window-icon='resources/book.png'
 
-	test [[ $? -eq 0 ]]; then
+	if [[ $? -eq 0 ]]; then
 		
 		device=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select an device for map its buttons'  --list --column='Aviable devices')
 
@@ -89,11 +59,11 @@ setButtonsCtl() {
 
 		xinput --test $id| zenity --text-info
 
-		buttonID=$(    )
+		buttonID=$(zenity --scale --title='Select the button number' --text='You must to select the button number that you want associate to a keyboard shortcut' --value=1 --min-value=1 --max-value=30 --window-icon='resources/button.png')
 
 		until ! [0]; do
 
-			getShortCut()
+			getShortCut
 
 			zenity --
 
@@ -124,44 +94,66 @@ setButtonsCtl() {
 
 			test ! [[ $? -ne 0 ]]; then
 
-				setButtonsCtl()
+				setButtonsCtl
 
 			else
 
-				main()
+				main
 
 			fi
 
 		else
 
-			setButtonsCtl()	
+			setButtonsCtl	
 
 		fi
 
 
 	else
-		main()	
+		main
 
 	fi
 
 }
 
 
-helpCtl () {
+#helpCtl () {}
 
 
+main () {
 
-}
-
-
-getShortCut () {
+	mainWindow=$(echo ${options[*]}| tr ' ' '\n'| zenity --list --title='Here no one give up, animus' --text='Select an option' --column='Options' --window-icon='resources/artificial-intelligence.png' --width='275' --height='225')
 	
-	modifiers=$(xsetwacom --list modifiers| sed '/ed:/d;/Keys/d;/^$/d'| zenity --list)
+	case $mainWindow in
 
-	keyCombination+=("$modifiers")
+		"${options[0]}")
+			kernelCtl
+		;;
+
+		"${options[1]}")
+			devicesCtl
+		;;
+
+		"${options[2]}")
+			parametersCtl
+		;;
+
+		"${options[3]}")
+			modifiersCtl
+		;;
+			
+		"${options[4]}")
+			setButtonsCtl
+		;;
+
+		"${options[5]}")
+			helpCtl
+		;;
+
+	esac
+
 
 }
 
-# zenity --text-info --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.txt' --window-icon='resources/book.png'
 
-# ;devices=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select an device for map its buttons'  --list --column='Aviable devices')
+main

@@ -8,12 +8,18 @@
         <style>
 
             body {
-                background-color: #a49e9e;
-                color: rgb(16, 121, 61);
+                background-color: rgb(31, 48, 58);
+                
             }
 
+            h1 {
+                color: rgb(16, 121, 61);
+
+            }
+
+
             p {
-                color: rgb(27, 44, 56);
+                color: #a49e9e;
             
             }
 
@@ -26,31 +32,60 @@
         <h1>
             Instructions of use:
         </h1>
-
-        <p>
-        This easy my bro, due to I'm a bad programer and super lazy, we gonna do this of the hard way, first you have to know how many buttons have your grafic tablet or the pencil(some have buttons like mine) this because we gonna set every button one by one, and because I hadn't took my shower I'm stinking, so, is or write a lot of code and do sleep to my family with my stink or I do this simple and take my shower of the month and my family don't kick me out of the house, easy choice...Let's do this simple, is easy.
-
-        First choose if you want to set buttons of the grafic tablet or pencil, just select the the device in the window list, then click continue button...Obviusly
-
-        Second will appears a window for test the buttons of your device, let's explain thismore slowly due to mostly of manufacturers of grafic tablets ignore our lovely GnuLinux system, they don't create specific software for GnuLinux, anyway we have to our Super Coders(Programmers) Heroes that build code for enable support of the grafic tablets in our OS, but here the buttons have an id number, so, for mapping or associate(Is the same meaning) the buttons to keyboard shortcuts or keys you need to know the id number of the button, you can to know the id number using xinput command in your terminal:
         
+            <p>
+            This easy my bro, due to I'm a bad programer and super lazy, we gonna do this of the hard way, first you have to know how many buttons have your grafic tablet or the pencil(some have buttons like mine) this because we gonna set every button one by one, and because I hadn't took my shower I'm stinking, so, is or write a lot of code and do sleep to my family with my stink or I do this simple and take my shower of the month and my family don't kick me out of the house, easy choice...Let's do this simple, is easy.
+            </p>
+
+        <h3 style="color: #ae0750;">First:</h3>
+        
+            <p>
+            Choose if you want to set buttons of the grafic tablet or pencil, this step is just select the the device in the window list, then click continue button...Obviusly
+            </p>
+
+        <h3 style="color: #11b3ee;">Second:</h3>
+        
+            <p>
+             Will appears a window for test the buttons of your device, let's explain this more slowly due to mostly of manufacturers of grafic tablets ignore our lovely GnuLinux system, they don't create specific software for GnuLinux, anyway we have to our Super Coders(Programmers) Heroes that build code for enable support of the grafic tablets in our OS, but here the buttons have an id number, so, for mapping or associate(Is the same meaning) the buttons to keyboard shortcuts or keys you need to know the id number of the button, If you want to know the id button number using xinput command from your terminal first I gonna make some chilaquiles for breakfast, ok don't but sorry I'm hungry...Lol is joke...Seriusly I gonna explain you how do this from your terminal even this haven't sense because for avoid all this I made this script, anyway there's not anything bad in learn some new, so stop of talk and let's go to the important.....Ok don´t, we need stop here little padawan, for do this in first place we need to know the device id number(Another Id? Yeah here we love the id numbers) for use it in the xinput command, this is very easy you only need to use the xsetwacom command of this way:
+            </p>
 
         <pre>
             <code>
-        	<font color="green"> 
-        xinput --test [device id]
-        	</font>
+                <font color="#bd9ee8"> 
+$ xsetwacom --list devices
+                </font>
             </code>
         </pre>
+        
+            <p>
+                Then of use the command of above, will be listed the devices connected to your pc which its respectively id device number, then we only put the device id number in the command below: 
+            </p>
 
 
+        <pre>
+            <code>
+        	    <font color="#34e980"> 
+$ xinput --test [device id]
+        	    </font>
+            </code>
+        </pre>
+        
+            <p>   
+                Then just test the buttons clicking them and xinput returns you the number of button and some parameters, but this is some laborius, let's do this more easy, then of select the device will be prompt a window for test(push) the buttons of the device and that you can know which is the number id of the button, remember the id numbers very well cuz. Then of test you can to click cancel or continue window buttons, then of this push any button of your grafic tablet for continue(This very important I gonna repeat again buddy....Then of click the acept button in the window push the button of your grafic tablet for that the program continue to the next window) with next option(The very, very cool option)
+            </p>
 
-        and testing the buttons clicking them and xinput returns you the number of button and some parameters, but this is some laborius, let's do this more easy, then of select the device will be prompt a window for test(push) the buttons of the device and that you can know which is the number id of the button, remember the id numbers very well cuz. Then of test you can to click cancel or continue window buttons, then of this push any button of your grafic tablet for continue with next option(The very, very cool option)
-        </p>
+        <h3 style="color: #26f22d;">Third:</h3>
 
-        <p>
-        Third here only insert in the form the button number and the keyboard shortcut or clear the keyboard shortcut assigned to that button, and that is all my little Picasso, now you can paint a Mona Lisa or any artwork that could imagine or you can do pure doodles like me.
-        </p>
+            <p>
+                Here only select the button number of your grafic tablet in the scale, then click continue and select the modifier(or modifiers..Yeah, can be how many that you want) for add to your keyboard shortcut, then answer the window question for stop or add modifiers and continue,  then and for last and that is all my little Picasso, now you can paint a Mona Lisa or any artwork that could imagine or you can do pure doodles like me.
+            </p>
+
+
+        <h3 style="color: #07f4c5;">Fourth:</h3>
+
+            <p>
+                Is just a a tip...Take a shower bro, your smell is so stronger than I can smell you until my house, my head hurts due your smell, even my eyes burn..How I could explain this sense? Is like pepper gas....Lol is joke, Is like ten thousand sliced onions at same time
+            </p>
 
     </body>
 

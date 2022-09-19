@@ -1,5 +1,6 @@
 #Grafic tablet GnuLinux
-[graficTablet](resources/tablet.jpg)
+
+![graficTablet](resources/tablet.jpg)
 ---
 
 khgbkhbg

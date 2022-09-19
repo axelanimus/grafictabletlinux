@@ -1,12 +1,12 @@
 # Grafic tablet GnuLinux
 
-##### A easy way(grafic script) for manage the configurations of your grafic tablet over Gnu+Linux😉😎
+### A easy way(grafic script) for manage the configurations of your grafic tablet over Gnu+Linux😉😎
 
 ![graficTablet](resources/tablet.jpeg)
 
 ---- 
 
-Let\'s explain how works this trash
+#### Let's explain how works this thing hommies 
 
 
 

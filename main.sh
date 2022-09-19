@@ -46,74 +46,87 @@ getShortCut () {
 }
 
 
+
 setButtonsCtl () {
 
-	zenity --text-info --html --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.txt' --window-icon='resources/book.png'
+	dispCtl=$(xsetwacom --list devices)
 
-	if [[ $? -eq 0 ]]; then
-		
-		device=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select an device for map its buttons'  --list --column='Aviable devices')
+	if test -z $dispCtl; then
 
-		id=$(xsetwacom --list devices| grep -ie "$device"| sed 's/id:/\nid:/g'| grep -e 'id:'| tr -c "[:print:]" " "| cut -d " " -f2)
+		zenity --info --title='There is not devices connected' --text='Looks like is not detected devices, maybe is bad connected, the wire is failing, the kernel module was not installed or your grafic tablet is imaginary so this program only works with fisic devices bro' --window-icon='resources/wire.png'
+		main
 
+	else
 
-		xinput --test $id| zenity --text-info
+		unset $dispCtl
 
-		buttonID=$(zenity --scale --title='Select the button number' --text='You must to select the button number that you want associate to a keyboard shortcut' --value=1 --min-value=1 --max-value=30 --window-icon='resources/button.png')
-
-		until ! [0]; do
-
-			getShortCut
-
-			zenity --question --title='Answer wisely Einstein' --text='This are modifiers added to your shortcut:   $(echo ${keyCombination[*]})  Do you want add another?' --window-icon='resources/question.png'
-
-			if [[ $? -ne 0 ]]; then
-
-				break
-
-			else
-
-				continue
-
-			fi
-
-		done
-
-
-		pureKeys=$(zenity --forms --title='Alphabet keys for your shortcut' --text="Right now this is your key shortcut for the button number $buttonID:  $(echo ${keyCombination[*]}| tr ' ' '+')" --add-entry='Insert one alphabet key or many separate by spaces') 
-
-		zenity --question --title='Finally the last step' --text="This is your key shortcut for the button id $buttonID :  $(echo ${keyCombination[*]}| tr ' ' '+') + $(echo $pureKeys| tr ' ' '+')  Is correct?" --window-icon='resources/information.png'
+		zenity --text-info --html --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.txt' --window-icon='resources/book.png'
 
 		if [[ $? -eq 0 ]]; then
 
-			xsetwacom --set "$device" Button $buttonID "key ${keyCombination[*]} $pureKeys" 
+			device=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select an device for map its buttons'  --list --column='Aviable devices')
 
-			zenity --info --window-icon='resources/ok.png'
+			id=$(xsetwacom --list devices| grep -ie "$device"| sed 's/id:/\nid:/g'| grep -e 'id:'| tr -c "[:print:]" " "| cut -d " " -f2)
 
-			zenity --question --title='Sucess, we did it champion' --text="Do you want to map another button of your grafic tablet?" --window-icon='resources/ask.png'
 
-			if ! [[ $? -ne 0 ]]; then
+			xinput --test $id| zenity --text-info
 
-				setButtonsCtl
+			buttonID=$(zenity --scale --title='Select the button number' --text='You must to select the button number that you want associate to a keyboard shortcut' --value=1 --min-value=1 --max-value=30 --window-icon='resources/button.png')
+
+			until ! [0]; do
+
+				getShortCut
+
+				zenity --question --title='Answer wisely Einstein' --text='This are modifiers added to your shortcut:   $(echo ${keyCombination[*]})  Do you want add another?' --window-icon='resources/question.png'
+
+				if [[ $? -ne 0 ]]; then
+
+					break
+
+				else
+
+					continue
+
+				fi
+
+			done
+
+
+			pureKeys=$(zenity --forms --title='Alphabet keys for your shortcut' --text="Right now this is your key shortcut for the button number $buttonID:  $(echo ${keyCombination[*]}| tr ' ' '+')" --add-entry='Insert one alphabet key or many separate by spaces') 
+
+			zenity --question --title='Finally the last step' --text="This is your key shortcut for the button id $buttonID :  $(echo ${keyCombination[*]}| tr ' ' '+') + $(echo $pureKeys| tr ' ' '+')  Is correct?" --window-icon='resources/information.png'
+
+			if [[ $? -eq 0 ]]; then
+
+				xsetwacom --set "$device" Button $buttonID "key ${keyCombination[*]} $pureKeys" 
+
+				zenity --info --window-icon='resources/ok.png'
+
+				zenity --question --title='Sucess, we did it champion' --text="Do you want to map another button of your grafic tablet?" --window-icon='resources/ask.png'
+
+				if ! [[ $? -ne 0 ]]; then
+
+					setButtonsCtl
+
+				else
+
+					main
+
+				fi
 
 			else
 
-				main
+				setButtonsCtl	
 
 			fi
 
-		else
 
-			setButtonsCtl	
+		else
+			main
 
 		fi
 
-
-	else
-		main
-
 	fi
-
 }
 
 
@@ -122,7 +135,9 @@ setButtonsCtl () {
 
 main () {
 
-	mainWindow=$(echo ${options[*]}| tr ' ' '\n'| zenity --list --title='Here no one give up, animus' --text='Select an option' --column='Options' --window-icon='resources/artificial-intelligence.png' --width='275' --height='225')
+	mainWindow=$(echo ${options[*]}| tr ' ' '\n'| zenity --list --title='Here no one give up, animus' --text='Select an option' --column='Options' --window-icon='resources/artificial-intelligence.png' --width='275' --height='225'); [[ $? -ne 0 ]] && return 1
+
+
 	
 	case $mainWindow in
 

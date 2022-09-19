@@ -1,4 +1,18 @@
-#Let\'s explain how works this trash
+#Grafic tablet GnuLinux
+[graficTablet](resources/tablet.jpg)
+---
+
+khgbkhbg
+----
+
+###
+
+Let\'s explain how works this trash
+
+
+
+
+
 
 
 ---

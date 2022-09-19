@@ -1,4 +1,4 @@
-#Grafic tablet GnuLinux
+# Grafic tablet GnuLinux
 
 ![graficTablet](resources/tablet.jpg)
 ---

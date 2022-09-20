@@ -38,10 +38,10 @@ hash zenity: [[ 0 -ne $? ]] && echo -e "\n Zenity binary is not installed\n"
 sudo chmod u+x installer.sh; ./installer.sh
 ```
 
-* Then just run the `main.sh` script with this command:
+* Then just give execution permisses to the `main.sh` script and run it with this command:
 
 ```bash
-./main.sh
+sudo chmod u+x main.sh; ./main.sh
 ```
 ---
 

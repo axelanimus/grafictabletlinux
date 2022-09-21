@@ -6,7 +6,7 @@ if [[ $? -ne 0 ]]; then
     
     echo -e "\033[1;4;31mZenity\e[0m is not installed, we need \033[1;4;31mZenity\e[0m for create the GUI"
 
-    declare -a packcageM=$('apt' 'pacman' 'dnf')
+    declare -a packcageM=$('apt' 'pacman' 'yum')
 
     declare -a options=('yes' 'not')
 

@@ -17,26 +17,28 @@ if [[ $? -ne 0 ]]; then
         
             printf "\033[1;32mzenity\033[0m will be install it also we gonna give a kiss to the keyboard now\nyes you, if you don\'t do it your pc will gonna do kabum is your choice 3, 2, 1\n ok do not rather we gonna give execution permisses to the main.sh script...\nAt least kiss the screen please\n"
             
-            for pkgM in ${packcageM}; do
+            for pkgM in ${packcageM[*]}; do
 
                 hash pkgM
                 if [[ $? -eq 0  ]]; then
 
-                    packcageM=$pkgM
+                    packcageM2=$pkgM
                     break
                 fi
             
             done
 
-            if test packcageM = 'apt'; then
+            unset packcageM
+            
+            if test "$packcageM2" = "apt"; then
 
                 sudo apt update && sudo apt upgrade -y && sudo apt install zenity
 
-            elif test packcageM = 'pacman'; then
+            elif test "$packcageM2" = "pacman"; then
 
                 sudo pacman -Syu && pacman -S zenity
 
-            elif test packcageM = 'yum'; then
+            elif test "$packcageM2" = "yum"; then
 
                 sudo yum update && sudo yum install zenity
 

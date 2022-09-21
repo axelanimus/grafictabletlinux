@@ -24,12 +24,12 @@ git clone https://github.com/axelanimus/grafictabletlinux
 hash zenity: [[ 0 -ne $? ]] && echo -e "\n Zenity binary is not installed\n"
 ```
 
-* If the zenity binary isn't installed and you're using any distro that not use apt package manager you must install [zenity binary](https://help.gnome.org/users/zenity/stable/) manually with the respective package manager of your distro(Sorry, by now the installer script just works with apt, but in the future it will works with all the package managers)
+* If the zenity binary isn't installed and you're using any distro that not use apt, pacman or yum packages managers you must install [zenity binary](https://help.gnome.org/users/zenity/stable/) manually with the respective package manager of your distro.
 
 ##### Here we gonna see some ways for run the script correctly depend the case.
 ---
 
-#### If you use any GnuLinux distro with apt package manager
+#### If you use any GnuLinux distro with apt, pacman or yum packages managers
 
 
 * This is super easy bro( wnie😁😉😏) first give execution permisions to the `installer.sh` script(paste the below code in your terminal located inside the folder of this repo) and follow the instructions of the installer script:

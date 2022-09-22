@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-declare -a options=(kernel devices parameters modifiers setButtons help)
+declare -a options=('kernel' 'devices' 'parameters' 'modifiers' 'setButtons')
 
 declare -a keyCombination=()
 
@@ -130,8 +130,6 @@ setButtonsCtl () {
 }
 
 
-#helpCtl () {}
-
 
 main () {
 
@@ -161,12 +159,7 @@ main () {
 			setButtonsCtl
 		;;
 
-		"${options[5]}")
-			helpCtl
-		;;
-
 	esac
-
 
 }
 

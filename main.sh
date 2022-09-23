@@ -10,7 +10,7 @@ zenity --info  --title="Let's do it champion" --text='This script will gonna hel
 
 kernelCtl () {
 
-	zenity --text-info --title="How to install the drivers for your grfafic tablet" --html --url='https://github.com/DIGImend/digimend-kernel-drivers' --window-icon='resources/optimistic.png' --width='600' --height='600'; main
+	zenity --text-info --title="How to install the drivers for your grafic tablet" --html --url='https://github.com/DIGImend/digimend-kernel-drivers' --window-icon='resources/optimistic.png' --width='600' --height='600'; main
 
 }
 
@@ -60,16 +60,16 @@ setButtonsCtl () {
 
 		unset $dispCtl
 
-		zenity --text-info --html --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.txt' --window-icon='resources/book.png'
+		zenity --text-info --html --title='Instructions of use this option' --checkbox='I promise by my mom and dad, my childrens, my family, my pet, by Chuck Norris, by my country, that I readed the instructions, If I did not that my pc burn' --filename='resources/instructions.html' --window-icon='resources/book.png'
 
 		if [[ $? -eq 0 ]]; then
 
-			device=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select an device for map its buttons'  --list --column='Aviable devices')
+			device=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select a device for map its buttons'  --list --column='Aviable devices')
 
 			id=$(xsetwacom --list devices| grep -ie "$device"| sed 's/id:/\nid:/g'| grep -e 'id:'| tr -c "[:print:]" " "| cut -d " " -f2)
 
 
-			xinput --test $id| zenity --text-info
+			xinput --test $id| zenity --text-info --title='Push a button of your grafic tablet'
 
 			buttonID=$(zenity --scale --title='Select the button number' --text='You must to select the button number that you want associate to a keyboard shortcut' --value=1 --min-value=1 --max-value=30 --window-icon='resources/button.png')
 

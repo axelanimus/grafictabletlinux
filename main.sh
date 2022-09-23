@@ -73,7 +73,7 @@ setButtonsCtl () {
 
 			buttonID=$(zenity --scale --title='Select the button number' --text='You must to select the button number that you want associate to a keyboard shortcut' --value=1 --min-value=1 --max-value=30 --window-icon='resources/button.png')
 
-			until ! [0]; do
+			until ! [ 0 ]; do
 
 				getShortCut
 

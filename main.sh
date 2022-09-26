@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-
+#Array with the options for select
 declare -a options=('kernel' 'devices' 'parameters' 'modifiers' 'setButtons')
 
+#Array that gets the modifiers
 declare -a keyCombination=()
 
 zenity --info  --title="Let's do it champion" --text='This script will gonna help you to manage some configurations of your grafic tablet, never give up, trust in me you can do anything that you can imagine.' --window-icon='resources/renewable-energy.png'
@@ -51,11 +52,13 @@ setButtonsCtl () {
 
 	dispCtl=$(xsetwacom --list devices)
 
+	#Flow control for don´t run this option if there's not devices connected
 	if test -z $dispCtl; then
 
 		zenity --info --title='There is not devices connected' --text='Looks like is not detected devices, maybe is bad connected, the wire is failing, the kernel module was not installed or your grafic tablet is imaginary so this program only works with fisic devices bro' --window-icon='resources/wire.png'
 		main
 
+	#If there's connected devices run this part
 	else
 
 		unset $dispCtl

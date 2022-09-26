@@ -6,9 +6,13 @@
 
 ---- 
 
+![window1](resources/1.png)
+
 #### Let's explain how works this thing hommies:
 
 * First you must to install the kernel support for grafic tablets, ok let's go more slowly, mostly GnuLinux distros already have include the support by default, but if you have any problem with your grafic tablet or its model is very new, you should try to install the most newest kernel drivers of support( :warning: this is by your own choose, if you don't know so much about this keep care about this, by default this not should create a fail if you follow the instructions sucefully) in [digimend](https://digimend.github.io/tablets/) github site you can get more info about the tablets models supported from [digimend github repo](https://github.com/DIGImend/digimend-kernel-drivers).
+
+![window2](resources/2.png)
 
 > 
 

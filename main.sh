@@ -58,7 +58,7 @@ setButtonsCtl () {
 		zenity --info --title='There is not devices connected' --text='Looks like is not detected devices, maybe is bad connected, the wire is failing, the kernel module was not installed or your grafic tablet is imaginary so this program only works with fisic devices bro' --window-icon='resources/wire.png'
 		main
 
-	#If there's connected devices run this part
+	#If there's connected devices run this
 	else
 
 		unset $dispCtl

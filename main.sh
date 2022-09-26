@@ -71,6 +71,7 @@ setButtonsCtl () {
 
 			id=$(xsetwacom --list devices| grep -ie "$device"| sed 's/id:/\nid:/g'| grep -e 'id:'| tr -c "[:print:]" " "| cut -d " " -f2)
 
+			zenity --info --title='Put atention here buddy' --text='Remember well...Again... REMEMBER WELL then of click on accept button in the next window you must to push the button of your grafic tablet again for continue with the program, in less words, then of click the accept button, the window gonna will desapair but the program still running and for appears the next window you must to push any button of your grafic tablet'
 
 			xinput --test $id| zenity --text-info --title='Push a button of your grafic tablet'
 

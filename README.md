@@ -62,7 +62,7 @@ sudo chmod u+x main.sh
 
 And this is all cuz, right now is very chafita the script, but with the time I gonna do more upgrades of this litle piece of beatiful trash, by now it should works fine for asociate keys and shortcuts to the buttons of your grafic tables, so **Animus && Never Give Up**.
 
-
+> So let's do it...Champion.
 
 credit for the icons:
 <a href="https://www.flaticon.com/free-icons/ai" title="ai icons">Ai icons created by Freepik - Flaticon</a>

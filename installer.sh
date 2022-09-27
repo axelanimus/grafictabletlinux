@@ -44,7 +44,7 @@ if [[ $? -ne 0 ]]; then
 
             else 
 
-                echo -e "Sorry looks like you haven\t installed any package manager support by this script you gonna need install zenity manually\nSorry litle Miguel Angel in pontecy...\n"
+                echo -e "Sorry looks like you haven\t installed any package manager supported by this script you gonna need install zenity manually\nSorry litle Miguel Angel in pontecy...\n"
 
                 return
 

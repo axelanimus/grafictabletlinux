@@ -79,11 +79,15 @@ setButtonsCtl () {
 				
 				xsetwacom --set "$device" Button $buttonClearID "0"
 
-				zenity --info --title='Ajuaa...Mission complete' --text="The button number $(echo $buttonClearID) was unmap sucefully...Cool...Cool like the heart of your ex"  --window-icon='resources/ok.png'
+				if [[ $? -eq 0  ]]; then
+
+					zenity --info --title='Ajuaa...Mission complete' --text="The button  was unmap sucefully...Cool...Cool like the heart of your ex"  --window-icon='resources/ok.png'
+
+				fi
 
 			fi
 
-			#Get the device id for use it with xinput comman
+			#Get the device id for use it with xinput command
 			id=$(xsetwacom --list devices| grep -ie "$device"| sed 's/id:/\nid:/g'| grep -e 'id:'| tr -c "[:print:]" " "| cut -d " " -f2)
 
 			zenity --info --title='Put atention here buddy' --text='Remember well...Again... REMEMBER WELL then of click on accept button in the next window you must to push the button of your grafic tablet again for continue with the program, in less words, then of click the accept button, the window gonna will desapair but the program still running and for appears the next window you must to push any button of your grafic tablet' --window-icon='resources/book.png'
@@ -119,8 +123,6 @@ setButtonsCtl () {
 			if [[ $? -eq 0 ]]; then
 
 				xsetwacom --set "$device" Button $buttonID "key ${keyCombination[*]} $pureKeys" 
-
-				zenity --info --window-icon='resources/ok.png'
 
 				zenity --question --title='Sucess, we did it champion' --text="Do you want to map another button of your grafic tablet?" --window-icon='resources/ask.png'
 

@@ -67,12 +67,28 @@ setButtonsCtl () {
 
 		if [[ $? -eq 0 ]]; then
 
+			#Get device name
 			device=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select a device for map its buttons'  --list --column='Aviable devices')
 
+			zenity --question --title='Unmap buttons' --text='Do you want to clear the button map (This works if you already mapped the button before, yeah this clear the key or keyboard associated to any button for let it like the heart of your ex..Empty... You must to know the button id number of the button which gonna be unmap)' --window-icon='resources/information.png'
+
+			#For clear the button map if was mapped before
+			if test 0 -eq $?; then
+
+				buttonClearID=$(zenity --entry --title='Clear the button map' --text='Put here the id number of the button that you want to unmap')
+				
+				xsetwacom --set "$device" Button $buttonClearID "0"
+
+				zenity --info --title='Ajuaa...Mission complete' --text="The button number $(echo $buttonClearID) was unmap sucefully...Cool...Cool like the heart of your ex"  --window-icon='resources/ok.png'
+
+			fi
+
+			#Get the device id for use it with xinput comman
 			id=$(xsetwacom --list devices| grep -ie "$device"| sed 's/id:/\nid:/g'| grep -e 'id:'| tr -c "[:print:]" " "| cut -d " " -f2)
 
 			zenity --info --title='Put atention here buddy' --text='Remember well...Again... REMEMBER WELL then of click on accept button in the next window you must to push the button of your grafic tablet again for continue with the program, in less words, then of click the accept button, the window gonna will desapair but the program still running and for appears the next window you must to push any button of your grafic tablet'
 
+			#Window for test the buttons and know its button id number
 			xinput --test $id| zenity --text-info --title='Push a button of your grafic tablet'
 
 			buttonID=$(zenity --scale --title='Select the button number' --text='You must to select the button number that you want associate to a keyboard shortcut' --value=1 --min-value=1 --max-value=30 --window-icon='resources/button.png')

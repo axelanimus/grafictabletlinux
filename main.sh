@@ -70,7 +70,7 @@ setButtonsCtl () {
 			#Get device name
 			device=$(xsetwacom --list devices| sed  's/id:/\nid:/g'| sed '/id:/d'| zenity --title='Detected devices' --text='Select a device for map its buttons'  --list --column='Aviable devices')
 
-			zenity --question --title='Unmap buttons' --text='Do you want to clear the button map (This works if you already mapped the button before, yeah this clear the key or keyboard associated to any button for let it like the heart of your ex..Empty... You must to know the button id number of the button which gonna be unmap)' --window-icon='resources/information.png'
+			zenity --question --title='Unmap buttons' --text='Do you want to clear the button map (This works if you already mapped the button before, yeah this clear the key or keyboard associated to any button for let it like the heart of your ex..Empty... You must to know the button id number of the button which gonna be unmap)????' --window-icon='resources/question.png'
 
 			#For clear the button map if was mapped before
 			if test 0 -eq $?; then
